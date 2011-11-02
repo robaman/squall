@@ -23,7 +23,7 @@ module Squall
     #          :last_name  => 'Smith',
     #          :group_id   => 1
     def create(options = {})
-      params.required(:login, :email, :password).accepts(:first_name, :last_name, :group_id).validate!(options)
+      params.required(:login, :email, :password).accepts(:first_name, :last_name, :user_group_id, :role_ids, :role).validate!(options)
       request(:post, '/users.json', default_params(options))
     end
 
