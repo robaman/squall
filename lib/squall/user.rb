@@ -69,6 +69,12 @@ module Squall
       response.collect { |vm| vm['virtual_machine']}
     end
 
+    # Validate availability of email address.
+    def validate_email(email)
+      response = request(:post, "/users/validate_login.json", :query => {:email => email})
+      response["valid"]
+    end
+
     # Edit a role for a user
     #
     # ==== Options
